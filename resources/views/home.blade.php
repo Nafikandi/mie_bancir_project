@@ -9,7 +9,7 @@
 
     <div class="hero_area">
         <div class="bg-box">
-            <div class="bg-op">pp</div>
+            <div class="bg-op"></div>
             <img src="{{ asset('images/lokasi.jpg') }}" alt="">
         </div>
         <!-- header section strats -->
@@ -53,9 +53,29 @@
                             <a class="cart_link" href="#">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </a>
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
+                            @guest
+                                <a href="{{ route('login') }}" class="user_link">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </a>
+                            @endguest
+
+                            @auth
+                                <a href="#" class="user_link">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            @endauth
+
+
                             {{-- <a href="" class="order_online">
                                 Order Online
                             </a> --}}
