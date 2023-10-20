@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,15 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
+
+Route::get('/admin', [AuthAdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/login', [AuthAdminController::class, 'logstore'])->name('admin.logstore');
+Route::get('/admin/register', [AuthAdminController::class, 'register'])->name('admin.register');
+Route::post('/admin/register', [AuthAdminController::class, 'registore'])->name('admin.registore');
+Route::post('/admin/logout', [AuthAdminController::class, 'destroy'])
+->name('admin.logout');
+
+Route::resource('/dashboard', AdminController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

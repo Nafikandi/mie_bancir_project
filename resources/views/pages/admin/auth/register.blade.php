@@ -28,16 +28,16 @@
                             <div class="brand-logo" style="margin-bottom: -5px">
                                 <img src="{{ asset('images/logo-mie-bancir.svg') }}" alt="logo">
                             </div>
-                            <h4>Tidak punya akun?</h4>
-                            <h6 class="font-weight-light">Silahkan daftar agar dapat memulai pemesanan </h6>
-                            <form class="pt-3 text-left" action="{{ route('register') }}" method="POST">
+                            <h4>Anda Pegawai?</h4>
+                            <h6 class="font-weight-light">Silahkan daftar untuk bisa menerima pesanan</h6>
+                            <form class="pt-3 text-left" action="{{ route('admin.registore') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="role_id" value="2">
+                                <input type="hidden" name="role_id" value="1">
                                 <div class="form-group">
                                     <input type="text"
                                         class="form-control form-control-lg @error('name') is-invalid
                                     @enderror"
-                                        id="exampleInputUsername1" name="name" placeholder="Masukan Nama"
+                                        id="exampleInputUsername1" name="name" placeholder="Nama Pegawai"
                                         value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -46,25 +46,24 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text"
-                                        class="form-control form-control-lg @error('name') is-invalid
-                                    @enderror"
-                                        id="exampleInputUsername1" name="username"
-                                        value="{{ old('username') }}"placeholder="Masukan Username">
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-
-                                </div>
-                                <div class="form-group">
                                     <input type="email"
                                         class="form-control form-control-lg @error('email') is-invalid
                                     @enderror"
                                         id="exampleInputEmail1" placeholder="Masukan Email" value="{{ old('email') }}"
                                         name="email">
                                     @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="number"
+                                        class="form-control form-control-lg @error('number_phone') is-invalid
+                                    @enderror"
+                                        id="exampleInputnumber_phone1" placeholder="Masukan Nomor Handphone"
+                                        value="{{ old('number_phone') }}" name="number_phone">
+                                    @error('number_phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -93,15 +92,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <div class="form-check text-left">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input">
-                                            Saya menyetujui semua Syarat & Ketentuan
-                                        </label>
-                                    </div>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit" name="daftar"
