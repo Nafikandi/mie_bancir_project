@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AuthAdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,8 @@ Route::post('/admin/register', [AuthAdminController::class, 'registore'])->name(
 Route::post('/admin/logout', [AuthAdminController::class, 'destroy'])
 ->name('admin.logout');
 
-Route::resource('/dashboard', AdminController::class);
+Route::resource('admin/dashboard', AdminController::class);
+Route::resource('admin/menu', MenuController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

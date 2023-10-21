@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('layouts.adminapp');
+        return view('pages.dashboard');
     }
 
     /**
@@ -85,5 +85,5 @@ class AdminController extends Controller
     {
         //
     }
-    
+
 }

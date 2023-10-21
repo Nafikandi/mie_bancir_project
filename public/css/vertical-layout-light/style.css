@@ -19721,7 +19721,10 @@ code {
     margin-left: 0;
     width: 100%;
   }
+
 }
+
+
 
 /* Utilities */
 .grid-margin {
@@ -24631,9 +24634,9 @@ dl li {
 }
 
 .table td img, .jsgrid .jsgrid-table td img {
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  border-radius: 5%;
 }
 
 .table td .badge, .jsgrid .jsgrid-table td .badge {

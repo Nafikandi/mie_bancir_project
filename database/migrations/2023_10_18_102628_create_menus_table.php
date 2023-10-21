@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->string('kd_menu',12);
-            $table->string('nama_menu',30);
+            $table->string('photo', 100);
+            $table->string('name_menu',30);
             $table->bigInteger('category_menu')->unsigned();
             $table->enum('status_menu', ['tersedia', 'habis']);
             $table->integer('price_menu');

@@ -15,6 +15,7 @@ use Alert;
 
 class AuthAdminController extends Controller
 {
+    
 
     public function login(){
         return view('pages.admin.auth.login');
