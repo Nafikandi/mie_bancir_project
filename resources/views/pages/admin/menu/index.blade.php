@@ -59,11 +59,11 @@
                                                 <td>{{ $item->name_menu }}</td>
                                                 <td>
                                                     @if ($item->status_menu == 'tersedia')
-                                                        <div class="badge badge-warning badge-sm text-white">
+                                                        <div class="badge badge-outline-warning badge-sm">
                                                             {{ $item->status_menu }}
                                                         </div>
                                                     @elseif ($item->status_menu == 'habis')
-                                                        <div class="badge badge-danger badge-sm text-white">
+                                                        <div class="badge badge-outline-danger badge-sm">
                                                             {{ $item->status_menu }}
                                                         </div>
                                                     @endif

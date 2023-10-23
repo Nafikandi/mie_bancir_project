@@ -13,77 +13,7 @@
             <img src="{{ asset('images/lokasi.jpg') }}" alt="">
         </div>
         <!-- header section strats -->
-        <header class="header_section">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="/">
-                        <div class="bg-light rounded pr-3">
-                            <img src="{{ asset('images/logo-mie-bancir.svg') }}" alt="" style="width: 50px;">
-                            <span class="text-dark">Sasiringan</span>
-                        </div>
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class=""> </span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mx-auto ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Beranda <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="menu.html">Menu</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">Tentang Kami</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="book.html">Reservasi</a>
-                            </li>
-                        </ul>
-                        <div class="user_option">
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                            <a class="cart_link" href="#">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </a>
-                            @guest
-                                <a href="{{ route('login') }}" class="user_link">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </a>
-                            @endguest
-
-                            @auth
-                                <a href="#" class="user_link">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
-                            @endauth
-
-
-                            {{-- <a href="" class="order_online">
-                                Order Online
-                            </a> --}}
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
+        <x-navbaruser></x-navbaruser>
         <!-- end header section -->
         <!-- slider section -->
         <section class="slider_section">
@@ -221,81 +151,93 @@
 
             <div class="filters-content">
                 <div class="row grid">
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div>
-                                <div class="img-box">
-                                    <img src="{{ asset('menu/es-campur-galuh-bungas.jpg') }}" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Es Campur Galuh Banjar
-                                    </h5>
-                                    <p>
-                                        Es campur terdiri dari campuran agar-agar,santan,selasih dll
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rp 10000
-                                        </h6>
-                                        <a href="">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </a>
+                    {{-- minuman --}}
+                    @foreach ($m as $mitem)
+                        <div class="col-sm-6 col-lg-4 all minuman">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="{{ url($mitem->photo) }}" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            {{ $mitem->name_menu }}
+                                        </h5>
+                                        <p>
+                                            {{ strip_tags(html_entity_decode($mitem->description_menu)) }}
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                Rp {{ number_format($mitem->price_menu, 0) }}
+                                            </h6>
+                                            <a href="{{ route('detail-menu', $mitem->kd_menu) }}">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 all makanan">
-                        <div class="box">
-                            <div>
-                                <div class="img-box">
-                                    <img src="{{ asset('menu/nasi-goreng.jpg') }}" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Nasi Goreng
-                                    </h5>
-                                    <p>
-                                        Nasi Goreng dengan berbagai pilihan topping
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rp 20000
-                                        </h6>
-                                        <a href="">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </a>
+                    @endforeach
+
+                    {{-- makanan --}}
+                    @foreach ($mb as $mbitem)
+                        <div class="col-sm-6 col-lg-4 all makanan">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="{{ url($mbitem->photo) }}" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            {{ $mbitem->name_menu }}
+                                        </h5>
+                                        <p>
+                                            {{ strip_tags(html_entity_decode($mbitem->description_menu)) }}
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                Rp {{ number_format($mbitem->price_menu, 0) }}
+                                            </h6>
+                                            <a href="{{ route('detail-menu', $mbitem->kd_menu) }}">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 all cemilan">
-                        <div class="box">
-                            <div>
-                                <div class="img-box">
-                                    <img src="{{ asset('menu/roti-pisang.jpg') }}" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Roti Pisang
-                                    </h5>
-                                    <p>
-                                        Roti pisang khas banjar dengan adonan pisang dan rempah-rempah khas sasiringan
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rp 6000
-                                        </h6>
-                                        <a href="">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </a>
+                    @endforeach
+
+                    {{-- cemilan --}}
+                    @foreach ($mr as $mrbitem)
+                        <div class="col-sm-6 col-lg-4 all cemilan">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="{{ url($mrbitem->photo) }}" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            {{ $mrbitem->name_menu }}
+                                        </h5>
+                                        <p>
+                                            {{ strip_tags(html_entity_decode($mrbitem->description_menu)) }}
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                Rp {{ number_format($mrbitem->price_menu, 0) }}
+                                            </h6>
+                                            <a href="{{ route('detail-menu', $mrbitem->kd_menu) }}">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
             <div class="btn-box">
@@ -307,9 +249,7 @@
     </section>
 
     <!-- end food section -->
-
     <!-- about section -->
-
     <section class="about_section layout_padding">
         <div class="container">
             <div class="row">
@@ -339,7 +279,6 @@
             </div>
         </div>
     </section>
-
     <!-- end about section -->
 
     <!-- book section -->
@@ -507,78 +446,13 @@
     <!-- end client section -->
 
     <!-- footer section -->
-    <footer class="footer_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-col">
-                    <div class="footer_contact">
-                        <h4>
-                            Kontak Kami
-                        </h4>
-                        <div class="contact_link_box">
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    Call +6895-2363-2292
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    sasiringan@gmail.com
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 footer-col">
-                    <div class="footer_detail">
-                        <a href="" class="footer-logo">
-                            Mie Bancir Khas Banjar Agus Sasiringan
-                        </a>
-                        <p>
-                            Pilihan tempat makan terbaik untuk anda, berbagai menu dari tradisional
-                            hingga modern
-                            tersedia disini dengan harga yang terjangkau
-                        </p>
-                        <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 footer-col">
-                    <h4>
-                        Jam Buka
-                    </h4>
-                    <p>
-                        Setiap Hari
-                    </p>
-                    <p>
-                        07:00 - 23:00 Wita
-                    </p>
-                </div>
-            </div>
-            <div class="footer-info">
-                <p>
-                    &copy; <span id="displayYear"></span> All Rights Reserved By
-                    Nafik Andi
-                </p>
-            </div>
-        </div>
-    </footer>
+    <x-footeruser></x-footeruser>
     <!-- footer section -->
 
     {{-- script --}}
+    @stack('before-main')
     @include('include.main')
+
 
 </body>
 

@@ -17,7 +17,7 @@ class MenuController extends Controller
 
     public function index(){
 
-        $menu = menu::with('categories')->get();
+        $menu = menu::with('categories')->orderBy('created_at', 'DESC')->get();
 
         $title = 'Hapus Menu!';
         $text = "Apakah Anda Yakin?";
