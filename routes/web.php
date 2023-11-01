@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\AuthAdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -40,6 +43,15 @@ Route::get('/detail-menu/{id}', [HomeController::class, 'detailmenu'])->name('de
 
 Route::middleware(['auth', 'role_user:2'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/keranjang', [HomeController::class, 'keranjang'])->name('keranjang');
+Route::post('/keranjang', [HomeController::class, 'getMenu'])->name('get-menu');
+Route::get('/keranjang/{id}', [HomeController::class, 'hapusMenuOrder'])->name('hapuskeranjang');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+// Route::post('/checkout', [HomeController::class, 'transaksi'])->name('keranjang.transaksi');
+Route::post('/apply-coupon', [CouponController::class, 'applyCoupon'])->name('applyCoupon');
+Route::post('/update-data', [HomeController::class, 'updateData'])->name('updateData');
+Route::post('/keranjang/transaksi', [HomeController::class, 'transaksi'])->name('transaksi');
+
 });
 
 

@@ -34,7 +34,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </form>
-                    <a class="cart_link" href="#">
+                    <a class="cart_link" href="{{ route('keranjang') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </a>
                     @guest

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class transaction extends Model
+class Coupon extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    use softDeletes;
 
-    protected $fillable = [
-        'transaction_id','order_id','courier','payment_name','transaction_status'
-    ];
+    protected $primaryKey = 'coupon_code';
+    public $incrementing = false;
+    protected $keyType = 'String';
 }

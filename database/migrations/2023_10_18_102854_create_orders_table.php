@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('user')->unsigned();
             $table->dateTime('order_date');
             $table->integer('quantity');
-            $table->string('desctipted',100);
+            $table->string('desctipted',100)->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->primary('code_order');

@@ -651,7 +651,151 @@ a:focus {
     }
   }
 
+  /* ordermenu */
+.menu-disp {
+    display: flex;
+}
 
+/* .detail_menu_section .checkout-menu {
+    width: 90%;
+} */
+
+.detail_menu_section tbody td.kurir {
+    width: 30%;
+}
+
+.detail_menu_section .imgMenu {
+    width:30%;
+}
+
+.detail_menu_section .table
+{
+    border: 1px solid rgba(248, 217, 217, 0.649);
+}
+
+.detail_menu_section .table th {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    border-bottom: 1px solid rgba(248, 217, 217, 0.649);
+}
+
+.detail_menu_section .table .imgMenu img {
+    width: 100%;
+    border-radius: 5%;
+}
+
+.detail_menu_section .table .nameMenu {
+    margin: 0px 20px;
+    width: 100%;
+}
+.detail_menu_section .table .nameMenu span {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+}
+.detail_menu_section .table .nameMenu span.quantity {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    color: #beb8b8;
+}
+.detail_menu_section .table .nameMenu span.price {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+}
+
+.detail_menu_section .table .nameMenu small {
+   font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.detail_menu_section  .card .content-order {
+    margin-top: 20px;
+}
+.detail_menu_section  .card .content-order h5 {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+}
+.detail_menu_section  .card .content-order span {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    color: #beb8b8;
+}
+
+.detail_menu_section  .card .content-order .subtotal {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+}
+
+.detail_menu_section  .card .content-order .total span {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    color: #000000;
+}
+
+.detail_menu_section  .card .content-order .subtotal1 {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+}
+
+.detail_menu_section  .card .status_discount {
+    margin-top: 30px;
+}
+.detail_menu_section  .card .status_discount p {
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+.detail_menu_section  .card .status_discount .d-flex {
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    color: #beb8b8;
+}
+.detail_menu_section  .card .btn-pesan {
+    margin-top: 20px;
+
+}
+.detail_menu_section  .card .btn-pesan button {
+    padding: 10px 0;
+    border-radius: 5px;
+}
+.detail_menu_section  .card .btn-pesan a {
+    padding: 10px 0;
+    border-radius: 5px;
+}
+.detail_menu_section .checkout {
+    margin-top: 40px;
+}
+.detail_menu_section .title-header h5 {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+.detail_menu_section span.alamat {
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+}
+.detail_menu_section .hp {
+    font-weight: 500;
+    font-size: 13px;
+    font-family: "Open Sans", sans-serif;
+}
+.detail_menu_section .checkout p {
+    font-size: 14px;
+    color: #a39e9e;
+}
+/* promo section */
 .promo_section {
     margin-top: 60px;
     margin-bottom: -10px;

@@ -9,7 +9,16 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ asset('images/logo-mie-bancir.svg') }}" type="mie-bancir">
 
+  <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="{{ config('midtrans.client_key') }}"></script>
+  <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
+
   <title> MIE BANCIR SASIRINGAN KHAS BANJARMASIN </title>
+  {{--
+  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-JPHbKITnkTfT0Wmx"></script> --}}
+
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />

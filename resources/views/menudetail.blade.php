@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     {{-- header --}}
     <x-navbaruser></x-navbaruser>
     {{-- endheader --}}
@@ -62,35 +62,55 @@
                         </div>
                         <div class="card-buy">
                             <div class="card">
-                                <div class="card-body">
-                                    <span>Mau Pesan Menu?</span>
-                                    <div class="number">
-                                        <span class="minus" id="minus">-</span>
-                                        <input type="text" value="1" id="quantity" />
-                                        <span class="plus" id="plus">+</span>
-                                    </div>
-                                    <div class="catatan">
-                                        <div class="text">
-                                            <i class="fa fa-pencil"></i>
-                                            Catatan
+                                <form action="{{ route('get-menu') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="kd_menu" value="{{ $menu->kd_menu }}">
+                                    @if (Auth()->user() == null)
+                                    @else
+                                        <input type="hidden" name="user_id" value="{{ Auth()->user()->user_id }}">
+                                    @endif
+                                    <div class="card-body">
+                                        <span>Mau Pesan Menu?</span>
+                                        <div class="number">
+                                            <span class="minus" id="minus">-</span>
+                                            <input type="text" value="1" id="quantity" name="quantity" />
+                                            <span class="plus" id="plus">+</span>
                                         </div>
-                                        <input type="text" name="catatan" id="catatan"
-                                            placeholder="berikan catatan untuk pesanan">
-                                    </div>
-                                    <div class="subtotal">
-                                        <div class="text-subtotal">
-                                            <span>Subtotal</span>
+                                        <div class="catatan">
+                                            <div class="text">
+                                                <i class="fa fa-pencil"></i>
+                                                Catatan
+                                            </div>
+                                            <input type="text" name="catatan" id="catatan"
+                                                placeholder="berikan catatan untuk pesanan">
                                         </div>
-                                        <div class="fix-price">
-                                            <span id="total">Rp. {{ $menu->price_menu }}</span>
+                                        <div class="subtotal">
+                                            <div class="text-subtotal">
+                                                <span>Subtotal</span>
+                                            </div>
+                                            <div class="fix-price">
+                                                <span id="total">Rp. {{ $menu->price_menu }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="beli-menu mt-2">
+                                            @if (Auth()->user() == null)
+                                                <a href="{{ route('login') }}" name="putKeranjang"
+                                                    class="btn btn-success btn-sm d-block p-2 w-100">Masukan
+                                                    Keranjang</a>
+                                                <a href="{{ route('login') }}"
+                                                    class="btn btn-primary btn-sm d-block mt-1 p-2">Pesan</a>
+                                            @else
+                                                <input type="submit" name="putKeranjang"
+                                                    class="btn btn-success btn-sm d-block p-2 w-100"
+                                                    value="Masukan Keranjang"></input>
+                                                <a href=""
+                                                    class="btn btn-primary btn-sm d-block mt-1 p-2">Pesan</a>
+                                            @endif
+
+
                                         </div>
                                     </div>
-                                    <div class="beli-menu mt-2">
-                                        <a href="" class="btn btn-success btn-sm d-block p-2">Masukan
-                                            Keranjang</a>
-                                        <a href="" class="btn btn-primary btn-sm d-block mt-1 p-2">Pesan</a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
 
